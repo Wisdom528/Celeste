@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  background:#0b0b0b;
+  color:#e5e7eb;
+  font-family:Segoe UI, Tahoma, sans-serif;
+  padding:20px;
+}
+
+/* Container */
+.container{
+  max-width:480px;
+  margin:0 auto;
+}
+
+/* Notice */
+.notice{
+  background:#fee2e2;
+  color:#7f1d1d;
+  padding:14px;
+  border-radius:10px;
+  margin-bottom:20px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* Intro text */
+.intro{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:15px;
+}
+
+/* Merchant Card */
+.card{
+  background:#111827;
+  border:1px solid #1f2937;
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:15px;
+  text-align:center;
+}
+
+/* Card headings */
+.card h3{
+  margin:0;
+  font-size:13px;
+  letter-spacing:1px;
+  color:#a78bfa;
+}
+
+/* Bank name */
+.card .bank{
+  margin-top:8px;
+  font-size:14px;
+  color:#9ca3af;
+}
+
+/* Account number */
+.card .acct{
+  margin:10px 0;
+  font-size:22px;
+  font-weight:bold;
+  letter-spacing:1px;
+  color:#fff;
+}
+
+/* Account name */
+.card .name{
+  font-size:14px;
+  color:#d1d5db;
+}
+
+/* Button */
+.btn{
+  margin-top:25px;
+  background:linear-gradient(135deg,#7c3aed,#4c1d95);
+  color:#fff;
+  padding:15px;
+  border-radius:30px;
+  font-weight:bold;
+  text-align:center;
+  cursor:pointer;
+  transition:transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover{
+  transform:scale(0.98);
+  opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="notice">
+    ⚠ When making the payment, please include words like <b>Capital</b>, <b>Loan</b>, or <b>Support</b> in the narration.
+  </div>
+
+  <p class="intro">
+    For your selected package, transfer exactly  
+     <b>₦8,500</b>, or <b>₦14,500</b>
+  </p>
+
+  <div class="card">
+    <h3>MERCHANT 1</h3>
+    <div class="bank">MOINEPOINT</div>
+    <div class="acct">8108736957</div>
+    <div class="name">WISDOM OTOIDE</div>
+  </div>
+
+  <div class="card">
+    <h3>MERCHANT 2</h3>
+    <div class="bank">KUDA Bank</div>
+    <div class="acct">2084119450</div>
+    <div class="name">WISDOM OTOIDE</div>
+  </div>
+
+  <div class="btn" id="paidBtn">
+    ✅ I have made the transfer
+  </div>
+
+</div>
+
+<script>
+document.getElementById("paidBtn").onclick = function(){
+  window.location.href = "verification.html";
+};
+</script>
+
+</body>
+</html>
