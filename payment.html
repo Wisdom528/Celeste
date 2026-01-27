@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment</title>
+<title>Celeste Payment</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 body{
   background:#0b0b0b;
@@ -17,86 +15,118 @@ body{
   padding:20px;
 }
 
-/* Container */
 .container{
-  max-width:480px;
+  max-width:520px;
   margin:0 auto;
+  text-align:center;
 }
 
-/* Notice */
+/* TIMER */
+.timer-box{
+  padding:16px;
+  border-radius:14px;
+  background:#0f172a;
+  margin-bottom:20px;
+}
+
+.timer-box h3{
+  margin:0;
+  font-size:14px;
+  color:#86efac;
+}
+
+#timer{
+  font-size:26px;
+  font-weight:bold;
+  color:#22c55e;
+  margin-top:6px;
+}
+
+/* NOTICE */
 .notice{
   background:#fee2e2;
   color:#7f1d1d;
   padding:14px;
-  border-radius:10px;
+  border-radius:12px;
   margin-bottom:20px;
   font-size:14px;
   line-height:1.5;
 }
 
-/* Intro text */
+/* Intro */
 .intro{
-  text-align:center;
-  margin-bottom:20px;
+  margin-bottom:25px;
   font-size:15px;
+  color:#d1fae5;
 }
 
-/* Merchant Card */
+/* MERCHANT CARD */
 .card{
   background:#111827;
   border:1px solid #1f2937;
   padding:18px;
-  border-radius:14px;
-  margin-bottom:15px;
-  text-align:center;
+  border-radius:16px;
+  margin-bottom:18px;
 }
 
-/* Card headings */
 .card h3{
-  margin:0;
+  margin:0 0 12px;
   font-size:13px;
   letter-spacing:1px;
-  color:#a78bfa;
+  color:#22c55e;
 }
 
-/* Bank name */
-.card .bank{
-  margin-top:8px;
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#020617;
+  padding:10px 12px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.row span{
   font-size:14px;
-  color:#9ca3af;
+  color:#e5e7eb;
 }
 
-/* Account number */
-.card .acct{
-  margin:10px 0;
-  font-size:22px;
+/* COPY BUTTON */
+.copy-btn{
+  background:#16a34a;
+  color:#052e16;
+  border:none;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
   font-weight:bold;
-  letter-spacing:1px;
-  color:#fff;
+  cursor:pointer;
 }
 
-/* Account name */
-.card .name{
-  font-size:14px;
-  color:#d1d5db;
-}
+.copy-btn:hover{ opacity:0.9; }
 
-/* Button */
+/* BUTTON */
 .btn{
-  margin-top:25px;
-  background:linear-gradient(135deg,#7c3aed,#4c1d95);
-  color:#fff;
-  padding:15px;
-  border-radius:30px;
+  margin-top:30px;
+  width:100%;
+  background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);
+  color:#052e16;
+  padding:16px;
+  border-radius:35px;
   font-weight:bold;
+  font-size:1.05rem;
   text-align:center;
   cursor:pointer;
-  transition:transform 0.2s, opacity 0.2s;
+  border:none;
 }
 
-.btn:hover{
-  transform:scale(0.98);
-  opacity:0.9;
+.btn:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
+.btn:hover:not(:disabled){
+  transform:translateY(-2px);
 }
 </style>
 </head>
@@ -105,38 +135,80 @@ body{
 
 <div class="container">
 
-  <div class="notice">
-    ⚠ When making the payment, please include words like <b>Capital</b>, <b>Loan</b>, or <b>Support</b> in the narration.
+  <!-- TIMER -->
+  <div class="timer-box">
+    <h3>Complete your payment within</h3>
+    <div id="timer">10:00</div>
   </div>
 
-  <p class="intro">
-    For your selected package, transfer exactly  
-     <b>₦8,500</b>, or <b>₦14,500</b>
+  <!-- NOTICE -->
+  <div class="notice">
+    ⚠ Use narration like <b>Capital</b>, <b>Loan</b>, or <b>Support</b> when making payment.
+  </div>
+
+  <!-- INTRO -->
+  <p class="intro" id="introText">
+    Transfer the exact amount for your selected plan.
   </p>
 
+  <!-- MERCHANT 1 -->
   <div class="card">
     <h3>MERCHANT 1</h3>
-    <div class="bank">MOINEPOINT</div>
-    <div class="acct">8108736957</div>
-    <div class="name">WISDOM OTOIDE</div>
+    <div class="row"><span>Moniepoint</span><button class="copy-btn" onclick="copyText('Moniepoint')">Copy</button></div>
+    <div class="row"><span>8108736957</span><button class="copy-btn" onclick="copyText('8108736957')">Copy</button></div>
+    <div class="row"><span>WISDOM OTOIDE</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
   </div>
 
+  <!-- MERCHANT 2 -->
   <div class="card">
     <h3>MERCHANT 2</h3>
-    <div class="bank">KUDA Bank</div>
-    <div class="acct">2084119450</div>
-    <div class="name">WISDOM OTOIDE</div>
+    <div class="row"><span>Kuda Bank</span><button class="copy-btn" onclick="copyText('Kuda Bank')">Copy</button></div>
+    <div class="row"><span>2084119450</span><button class="copy-btn" onclick="copyText('2084119450')">Copy</button></div>
+    <div class="row"><span>WISDOM OTOIDE</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
   </div>
 
-  <div class="btn" id="paidBtn">
+  <!-- BUTTON -->
+  <button class="btn" id="paidBtn">
     ✅ I have made the transfer
-  </div>
+  </button>
 
 </div>
 
 <script>
+/* COPY FUNCTION */
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Copied: " + text);
+}
+
+/* GET PLAN & AMOUNT FROM URL */
+const urlParams = new URLSearchParams(window.location.search);
+const plan = urlParams.get("plan") || "Selected";
+const amount = urlParams.get("amount") || "Amount";
+
+document.getElementById("introText").innerHTML = `Transfer <b>₦${amount}</b> for your <b>${plan}</b> plan.`;
+
+/* TIMER */
+let time = 600; // 10 minutes
+const timerEl = document.getElementById("timer");
+const countdown = setInterval(() => {
+  let minutes = Math.floor(time/60);
+  let seconds = time%60;
+  timerEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  if(time <= 0){
+    clearInterval(countdown);
+    timerEl.textContent="Time Expired";
+    alert("Payment session expired. Please restart.");
+    document.getElementById("paidBtn").disabled = true;
+  }
+  time--;
+},1000);
+
+/* BUTTON CLICK - REDIRECT TO TELEGRAM */
 document.getElementById("paidBtn").onclick = function(){
-  window.location.href = "verification.html";
+  const message = encodeURIComponent(`I have made paid for the ${plan} plan.`);
+  const telegramUrl = `https://t.me/Coachsucess1?text=${message}`;
+  window.open(telegramUrl, "_blank");
 };
 </script>
 
