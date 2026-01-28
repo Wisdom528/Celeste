@@ -154,18 +154,12 @@ body{
   <!-- MERCHANT 1 -->
   <div class="card">
     <h3>MERCHANT 1</h3>
-    <div class="row"><span>Moniepoint</span><button class="copy-btn" onclick="copyText('Moniepoint')">Copy</button></div>
-    <div class="row"><span>8108736957</span><button class="copy-btn" onclick="copyText('8108736957')">Copy</button></div>
-    <div class="row"><span>WISDOM OTOIDE</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
+    <div class="row"><span>Access Bank Nigeria</span><button class="copy-btn" onclick="copyText('Access Bank Nigeria')">Copy</button></div>
+    <div class="row"><span>1945494969</span><button class="copy-btn" onclick="copyText('1945494969')">Copy</button></div>
+    <div class="row"><span>DIVINE</span><button class="copy-btn" onclick="copyText('DIVINE')">Copy</button></div>
   </div>
 
-  <!-- MERCHANT 2 -->
-  <div class="card">
-    <h3>MERCHANT 2</h3>
-    <div class="row"><span>Kuda Bank</span><button class="copy-btn" onclick="copyText('Kuda Bank')">Copy</button></div>
-    <div class="row"><span>2084119450</span><button class="copy-btn" onclick="copyText('2084119450')">Copy</button></div>
-    <div class="row"><span>WISDOM OTOIDE</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
-  </div>
+  
 
   <!-- BUTTON -->
   <button class="btn" id="paidBtn">
@@ -207,7 +201,7 @@ const countdown = setInterval(() => {
 /* BUTTON CLICK - REDIRECT TO TELEGRAM */
 document.getElementById("paidBtn").onclick = function(){
   const message = encodeURIComponent(`I have made paid for the ${plan} plan.`);
-  const telegramUrl = `https://t.me/Coachsucess1?text=${message}`;
+  const telegramUrl = `https://t.me/Magnuspage?text=${message}`;
   window.open(telegramUrl, "_blank");
 };
 </script>
