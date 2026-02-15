@@ -6,43 +6,35 @@
 <title>Celeste Registration</title>
 
 <style>
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box; /* prevents overflow issues */
+}
 
-/* ===== BODY BACKGROUND ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Green gradient background like screenshot */
   background: linear-gradient(180deg, #022c15, #064e1f, #065f2a);
   min-height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #ffffff;
+  padding: 10px; /* ensures spacing on small screens */
 }
 
-/* ===== MAIN CARD ===== */
+/* ===== FORM CONTAINER ===== */
 .form-container {
-
-  width: 90%;
+  width: 100%;
   max-width: 420px;
-
   background: linear-gradient(180deg, #166534, #14532d);
-
   padding: 35px 25px;
-
   border-radius: 25px;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(255,255,255,0.1);
-
   text-align: center;
+  overflow: hidden; /* prevent input overflow */
 }
 
-/* ===== LOGO AREA ===== */
+/* ===== LOGO ===== */
 .logo-area {
   margin-bottom: 10px;
 }
@@ -72,52 +64,33 @@ body {
 
 .form-group input,
 .form-group select {
-
   width: 100%;
-
+  max-width: 100%; /* prevent overflow */
   padding: 14px 15px;
-
   border-radius: 14px;
-
   border: 2px solid #4ade80;
-
   outline: none;
-
   font-size: 1rem;
-
   background: transparent;
-
   color: #ecfdf5;
 }
 
-/* placeholder color */
 .form-group input::placeholder {
   color: #bbf7d0;
 }
 
-/* ===== BUTTON ===== */
+/* ===== SUBMIT BUTTON ===== */
 .btn-submit {
-
   width: 100%;
-
   padding: 16px;
-
   font-size: 1.1rem;
-
   font-weight: bold;
-
   border: none;
-
   border-radius: 14px;
-
   cursor: pointer;
-
   background: linear-gradient(90deg, #84cc16, #4ade80);
-
   color: #022c15;
-
   margin-top: 15px;
-
   transition: 0.3s;
 }
 
@@ -126,39 +99,7 @@ body {
   box-shadow: 0 10px 25px rgba(74,222,128,0.4);
 }
 
-/* ===== CHECKBOX ===== */
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #bbf7d0;
-}
-
-.checkbox-group input {
-  accent-color: #22c55e;
-}
-/* Fix overflow issue */
-* {
-  box-sizing: border-box;
-}
-
-.card {
-  overflow: hidden;
-}
-
-input, select {
-  width: 100%;
-  max-width: 100%;
-  display: block;
-}
-.card {
-  width: 90%;
-  max-width: 420px;
-  padding: 25px;
-}
-
+/* ===== TERMS ===== */
 .terms {
   margin-top: 15px;
   margin-bottom: 10px;
@@ -190,7 +131,31 @@ input, select {
   text-decoration: underline;
 }
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 25px 15px;
+  }
 
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 12px 10px;
+    font-size: 0.95rem;
+  }
+
+  .btn-submit {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
 </style>
 </head>
 
@@ -198,20 +163,14 @@ input, select {
 
 <div class="form-container">
 
-  <!-- LOGO -->
   <div class="logo-area">
     <img src="./asset/image/logo.png" alt="Celeste Logo">
     <div class="logo-text">Celeste</div>
   </div>
 
-  <!-- SUBTITLE -->
-  <div class="subtitle">
-    Turn your social activity into real earnings
-  </div>
+  <div class="subtitle">Turn your social activity into real earnings</div>
 
-  <!-- FORM -->
   <form id="registerForm">
-
     <div class="form-group">
       <input type="text" id="fullname" placeholder="Full Name" required>
     </div>
@@ -244,25 +203,19 @@ input, select {
       </select>
     </div>
 
-   <div class="terms">
-  <label>
-    <input type="checkbox" required>
-    <span>I agree to <a href="#">Terms and Conditions</a></span>
-  </label>
-</div>
+    <div class="terms">
+      <label>
+        <input type="checkbox" id="terms" required>
+        <span>I agree to <a href="#">Terms and Conditions</a></span>
+      </label>
+    </div>
 
-
-    <button class="btn-submit" type="submit">
-      Create My CELESTE Account
-    </button>
-
+    <button class="btn-submit" type="submit">Create My CELESTE Account</button>
   </form>
-
 </div>
 
 <script>
 document.getElementById("registerForm").addEventListener("submit", function(e){
-
   e.preventDefault();
 
   const fullname = document.getElementById("fullname").value.trim();
@@ -285,17 +238,9 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
 
   const amount = plan === "Premium" ? 14500 : 8500;
 
-  const query =
-  `?fullname=${encodeURIComponent(fullname)}
-  &username=${encodeURIComponent(username)}
-  &phone=${encodeURIComponent(phone)}
-  &email=${encodeURIComponent(email)}
-  &country=${encodeURIComponent(country)}
-  &plan=${encodeURIComponent(plan)}
-  &amount=${amount}`;
+  const query = `?fullname=${encodeURIComponent(fullname)}&username=${encodeURIComponent(username)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&country=${encodeURIComponent(country)}&plan=${encodeURIComponent(plan)}&amount=${amount}`;
 
   window.location.href = "payment.html" + query;
-
 });
 </script>
 

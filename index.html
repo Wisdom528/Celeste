@@ -425,6 +425,63 @@ header h2{
   text-align: center;
 }
 
+/* ===== MOBILE RESPONSIVE FIXES ===== */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* slightly smaller for mobile */
+  }
+
+  .hero, .section, .features-card, .plan-card {
+    padding: 25px 15px; /* reduce padding */
+    max-width: 95%; /* use almost full width */
+  }
+
+  .hero-title {
+    font-size: 2rem; /* smaller hero title */
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .plan-card img, .hero-media img {
+    max-width: 100%; /* ensure images scale */
+    height: auto;
+  }
+
+  .plan-btn, .hero-btn {
+    width: 100%; /* buttons stretch full width */
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  .features-card ul li, .celeste-offers ul li, .plan-features ul li {
+    font-size: 0.9rem; /* text scales down for mobile */
+  }
+
+  .register-heading, .register-normal {
+    font-size: 1rem;
+  }
+
+  header {
+    padding: 12px 15px; /* smaller header */
+  }
+
+  header h2 {
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.6rem;
+  }
+
+  .terms label {
+    flex-wrap: wrap; /* checkbox + text wraps properly */
+    gap: 5px;
+  }
+}
+
+
 </style>
 </head>
 <body>
