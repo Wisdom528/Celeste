@@ -5,28 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Celeste Payment</title>
 
+<!-- Professional font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{ box-sizing:border-box; }
 
 body{
-  background:#0b0b0b;
+  background: linear-gradient(135deg, #052e16, #064e3b, #022c22);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
   color:#e5e7eb;
-  font-family:Segoe UI, Tahoma, sans-serif;
+  font-family:'Poppins','Segoe UI', Tahoma, sans-serif;
   padding:20px;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 .container{
   max-width:520px;
   margin:0 auto;
   text-align:center;
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(12px);
+  padding:20px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
 /* TIMER */
 .timer-box{
   padding:16px;
   border-radius:14px;
-  background:#0f172a;
+  background:#020617;
   margin-bottom:20px;
+  border:1px solid #064e3b;
 }
 
 .timer-box h3{
@@ -62,8 +79,8 @@ body{
 
 /* MERCHANT CARD */
 .card{
-  background:#111827;
-  border:1px solid #1f2937;
+  background:#020617;
+  border:1px solid #064e3b;
   padding:18px;
   border-radius:16px;
   margin-bottom:18px;
@@ -80,10 +97,11 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#020617;
+  background:#000000;
   padding:10px 12px;
   border-radius:10px;
   margin-bottom:10px;
+  border:1px solid rgba(34,197,94,0.2);
 }
 
 .row span{
@@ -101,9 +119,13 @@ body{
   font-size:12px;
   font-weight:bold;
   cursor:pointer;
+  transition:0.3s;
 }
 
-.copy-btn:hover{ opacity:0.9; }
+.copy-btn:hover{
+  opacity:0.9;
+  transform:scale(1.05);
+}
 
 /* BUTTON */
 .btn{
@@ -118,6 +140,7 @@ body{
   text-align:center;
   cursor:pointer;
   border:none;
+  transition:0.3s;
 }
 
 .btn:disabled{
@@ -127,6 +150,7 @@ body{
 
 .btn:hover:not(:disabled){
   transform:translateY(-2px);
+  box-shadow:0 0 20px rgba(34,197,94,0.4);
 }
 </style>
 </head>
@@ -156,7 +180,7 @@ body{
     <h3>MERCHANT 1</h3>
     <div class="row"><span>MONIEPOINT</span><button class="copy-btn" onclick="copyText('MONIEPOINT')">Copy</button></div>
     <div class="row"><span>8108736957</span><button class="copy-btn" onclick="copyText('8108736957')">Copy</button></div>
-    <div class="row"><span>WISDOM</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
+    <div class="row"><span>WISDOM OTOIDE</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
   </div>
 
   <!-- MERCHANT 2 -->
@@ -164,7 +188,7 @@ body{
     <h3>MERCHANT 2</h3>
     <div class="row"><span>KUDA</span><button class="copy-btn" onclick="copyText('KUDA')">Copy</button></div>
     <div class="row"><span>2084119450</span><button class="copy-btn" onclick="copyText('2084119450')">Copy</button></div>
-    <div class="row"><span>WISDOM</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
+    <div class="row"><span>WISDOM OTOIDE</span><button class="copy-btn" onclick="copyText('WISDOM OTOIDE')">Copy</button></div>
   </div>
 
   <!-- BUTTON -->
@@ -175,26 +199,25 @@ body{
 </div>
 
 <script>
-/* COPY FUNCTION */
 function copyText(text){
   navigator.clipboard.writeText(text);
   alert("Copied: " + text);
 }
 
-/* GET PLAN & AMOUNT FROM URL */
 const urlParams = new URLSearchParams(window.location.search);
 const plan = urlParams.get("plan") || "Selected";
 const amount = urlParams.get("amount") || "Amount";
 
 document.getElementById("introText").innerHTML = `Transfer <b>₦${amount}</b> for your <b>${plan}</b> plan.`;
 
-/* TIMER */
-let time = 600; // 10 minutes
+let time = 600;
 const timerEl = document.getElementById("timer");
+
 const countdown = setInterval(() => {
   let minutes = Math.floor(time/60);
   let seconds = time%60;
   timerEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
   if(time <= 0){
     clearInterval(countdown);
     timerEl.textContent="Time Expired";
@@ -204,7 +227,6 @@ const countdown = setInterval(() => {
   time--;
 },1000);
 
-/* BUTTON CLICK - REDIRECT TO TELEGRAM */
 document.getElementById("paidBtn").onclick = function(){
   const message = encodeURIComponent(`I have made paid for the ${plan} plan.`);
   const telegramUrl = `https://t.me/Coachsucess1?text=${message}`;
